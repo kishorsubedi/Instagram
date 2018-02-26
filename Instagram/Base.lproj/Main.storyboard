@@ -123,7 +123,7 @@
         <!--Story View Controller-->
         <scene sceneID="hQh-9V-OrY">
             <objects>
-                <viewController id="HoG-jk-7Zi" customClass="StoryViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="storyid" id="HoG-jk-7Zi" customClass="StoryViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fdW-nL-HFP"/>
                         <viewControllerLayoutGuide type="bottom" id="q3y-QX-EwY"/>
