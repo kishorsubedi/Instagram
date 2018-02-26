@@ -160,7 +160,7 @@
         <!--Upload View Controller-->
         <scene sceneID="JQq-If-ya0">
             <objects>
-                <viewController id="AbT-o2-WeS" customClass="UploadViewController" sceneMemberID="viewController">
+                <viewController id="AbT-o2-WeS" customClass="UploadViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CAr-9Q-HeE"/>
                         <viewControllerLayoutGuide type="bottom" id="K6E-lq-neU"/>
@@ -184,21 +184,34 @@
                                 <rect key="frame" x="40" y="420" width="240" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IiX-l0-knU">
-                                        <rect key="frame" x="61" y="5" width="118" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tD-Pw-ts0">
+                                        <rect key="frame" x="86" y="8" width="84" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleColor" red="1" green="0.13164663502063667" blue="0.061836007125721681" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Upload">
+                                            <color key="titleColor" red="1" green="0.36580762311986148" blue="0.29991058499133383" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.47826787399181725" green="0.46568946818746715" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6f-La-n1R">
+                                <rect key="frame" x="82" y="195" width="155" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Touch to upload photo"/>
+                                <connections>
+                                    <action selector="uploadImageFromSource:" destination="AbT-o2-WeS" eventType="touchUpInside" id="TWG-69-BLC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="pt6-Zx-esE"/>
+                    <connections>
+                        <outlet property="captionField" destination="73b-UU-GsP" id="bcV-3P-8wv"/>
+                        <outlet property="uploadImageView" destination="cdo-N9-NPt" id="m0Z-5l-ylS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htg-KZ-dL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -242,6 +255,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="l9o-nW-Ace"/>
+        <segue reference="jVE-3k-G3A"/>
     </inferredMetricsTieBreakers>
 </document>
