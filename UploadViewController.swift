@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Parse
 
 class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var uploadImageView: UIImageView!
     @IBOutlet weak var captionField: UITextField!
+    
     
     @IBAction func uploadImageFromSource(_ sender: Any) {
         let vc = UIImagePickerController()
@@ -21,7 +23,61 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
         
         self.present(vc, animated: true, completion: nil)
     }
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : Any]) {
+        // Get the image captured by the UIImagePickerController
+        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        
+        // Do something with the images (based on your use case)
+        uploadImageView.image = editedImage
+        // Dismiss UIImagePickerController to go back to your original view controller
+        dismiss(animated: true, completion: nil)
+    }
 
+    
+    @IBAction func uploadButton(_ sender: Any) {
+        
+        var caption = captionField.text
+        if uploadImageView.image == nil
+        {
+            print("Image not uploaded")
+        }
+        else
+        {
+            var posts = PFObject(className: "Posts")
+            posts["imageText"] = caption
+            posts["uploader"] = PFUser.current()
+            posts.saveInBackground(block: { (success: Bool, error: Error?) in
+                
+                if (error == nil)
+                {
+                    //success saving Parse object with imagetext and uploader. now save image
+                    var imageData = UIImagePNGRepresentation(self.uploadImageView.image!)
+                    var parseImageFile = PFFile(name: "uploaded_image.png", data: imageData!)
+                    posts["imageData"] = parseImageFile
+                    
+                    posts.saveInBackground(block: { (success: Bool, error: Error?) in
+                        if error == nil{
+                            print("data uploaded")
+                        }
+                        else
+                        {
+                            print(error)
+                        }
+                        
+                    })
+                }
+                else
+                {
+                    print("Error uploading")
+                }
+                
+            })
+            
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,17 +90,7 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
         // Dispose of any resources that can be recreated.
     }
     
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : Any]) {
-        // Get the image captured by the UIImagePickerController
-        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-        
-        // Do something with the images (based on your use case)
-        
-        // Dismiss UIImagePickerController to go back to your original view controller
-        dismiss(animated: true, completion: nil)
-    }
+    
 
     /*
     // MARK: - Navigation
