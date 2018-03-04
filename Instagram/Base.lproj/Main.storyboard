@@ -221,6 +221,7 @@
                     <connections>
                         <outlet property="captionField" destination="73b-UU-GsP" id="bcV-3P-8wv"/>
                         <outlet property="uploadImageView" destination="cdo-N9-NPt" id="m0Z-5l-ylS"/>
+                        <segue destination="fTo-bk-Htq" kind="presentation" identifier="uploadedloginsegue" id="rvg-CK-zNh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htg-KZ-dL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -266,5 +267,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="jVE-3k-G3A"/>
+        <segue reference="rvg-CK-zNh"/>
     </inferredMetricsTieBreakers>
 </document>

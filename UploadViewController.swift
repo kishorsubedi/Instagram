@@ -14,7 +14,6 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
     @IBOutlet weak var uploadImageView: UIImageView!
     @IBOutlet weak var captionField: UITextField!
     
-    
     @IBAction func uploadImageFromSource(_ sender: Any) {
         let vc = UIImagePickerController()
         vc.delegate = self
@@ -60,6 +59,7 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
                     posts.saveInBackground(block: { (success: Bool, error: Error?) in
                         if error == nil{
                             print("data uploaded")
+                            self.performSegue(withIdentifier: "uploadedloginsegue", sender: nil)
                         }
                         else
                         {
