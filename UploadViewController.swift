@@ -21,7 +21,10 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
         vc.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(vc, animated: true, completion: nil)
+        
+        
     }
+    
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
         // Get the image captured by the UIImagePickerController
@@ -37,6 +40,22 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
     
     @IBAction func uploadButton(_ sender: Any) {
         
+        Post.postUserImage(image: uploadImageView.image, withCaption: captionField.text) { (success: Bool, error: Error?) in
+            
+            if success
+            {
+                print("Data uploaded")
+                self.performSegue(withIdentifier: "uploadedloginsegue", sender: nil)
+            }
+            else
+            {
+                print(error)
+            }
+        }
+        
+    }
+        
+        /*
         var caption = captionField.text
         if uploadImageView.image == nil
         {
@@ -61,7 +80,7 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
                             print("data uploaded")
                             self.performSegue(withIdentifier: "uploadedloginsegue", sender: nil)
                         }
-                        else
+                        else 
                         {
                             print(error)
                         }
@@ -77,7 +96,7 @@ class UploadViewController: UIViewController,UIImagePickerControllerDelegate, UI
             
             
         }
-    }
+    } */
     
     override func viewDidLoad() {
         super.viewDidLoad()

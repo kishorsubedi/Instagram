@@ -10,6 +10,7 @@ import UIKit
 
 class StoryViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     @IBAction func didLogout(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
     }
